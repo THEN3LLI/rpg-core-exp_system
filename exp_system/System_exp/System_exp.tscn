@@ -4,3 +4,6 @@
 
 [node name="System_exp" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "System_exp class for calculating exp by exp obtained"
+}
