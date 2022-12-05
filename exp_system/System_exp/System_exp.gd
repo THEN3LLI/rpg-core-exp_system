@@ -1,17 +1,33 @@
 extends Node2D
 
+## EXP SCRIPT that modify and calculate level, experience, attributes
+##
+## -
+##
+## 
 
-var class_modifier_values = [1,1,1,1] #health, stamina, magika, exp modifier, ability unlock every lvl
-var entity_exp
-var entity_exp_cap = 100
+## Health, stamina, magika, exp modifier, ability unlock every lvl
+var class_modifier_values = [1,1,1,1]
+## EXP of the entity
+var entity_exp 
+## Entity exp cap, maximum exp until level up
+var entity_exp_cap = 100 
+## Entity actual level
 var entity_level = 1
-## METHODS
+
+# METHODS
+## Func ready that set everything to a LVL1 value
 func _ready():
 	entity_exp = 0
 	entity_exp_cap = 100
 	entity_level = 1
-
-## get exp and sum to entity exp
+## INIT function that set the values from the parent
+func _init(var i_exp, i_cap, i_level):
+	entity_exp = i_exp 
+	entity_exp_cap = i_cap
+	entity_level = i_level
+	
+## Get exp and sum to entity exp
 func _get_exp(var i):
 	entity_exp +=i
 	if entity_exp_cap<= entity_exp:
@@ -20,12 +36,14 @@ func _get_exp(var i):
 		
 		entity_exp = 0
 		_get_exp(exp_overflow)
+## When is called make the level going +1. Also call _attribute_increase() and _exp_cap for a re-calc
 func _level_up():
 	
 	entity_level +=1
 	
 	#_attribute_increase()
 	_exp_cap()
+## Calculate new exp CAP based on level and class modifier value
 func _exp_cap():
 	entity_exp_cap = 100*entity_level*1.5*entity_level/2*class_modifier_values[3]
 	
