@@ -22,7 +22,7 @@ func _ready():
 	entity_exp_cap = 100
 	entity_level = 1
 ## INIT function that set the values from the parent
-func _init(var i_exp, i_cap, i_level):
+func _init_by_value(var i_exp, i_cap, i_level):
 	entity_exp = i_exp 
 	entity_exp_cap = i_cap
 	entity_level = i_level
@@ -34,7 +34,7 @@ func _get_exp(var i):
 		var exp_overflow = i-entity_exp_cap
 		_level_up()
 		
-		entity_exp = 0
+		#entity_exp = 0
 		_get_exp(exp_overflow)
 ## When is called make the level going +1. Also call _attribute_increase() and _exp_cap for a re-calc
 func _level_up():
@@ -45,7 +45,7 @@ func _level_up():
 	_exp_cap()
 ## Calculate new exp CAP based on level and class modifier value
 func _exp_cap():
-	entity_exp_cap = 100*entity_level*1.5*entity_level/2*class_modifier_values[3]
+	entity_exp_cap += entity_level*2.5*class_modifier_values[3]
 	
 	
 func _level_cap():pass
