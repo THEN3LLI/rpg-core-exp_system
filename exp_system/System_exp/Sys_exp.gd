@@ -1,9 +1,9 @@
 extends Node
 
 
-var entity_exp 
-var entity_exp_cap 
-var entity_level 
+export var entity_exp = 0
+export var entity_exp_cap = 100
+export var entity_level = 1
 
 func _ready():
 	pass
