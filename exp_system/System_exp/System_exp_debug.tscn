@@ -49,3 +49,5 @@ text = "+ 1000 exp"
 [node name="Sys_exp" parent="." instance=ExtResource( 2 )]
 
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+
+[editable path="Sys_exp"]

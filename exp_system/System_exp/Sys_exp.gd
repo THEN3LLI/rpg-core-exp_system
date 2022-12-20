@@ -23,6 +23,9 @@ func _entity_get_exp(var i):
 	
 func _entity_level_up():
 	entity_level += 1
+	print(($Sys_ability._get_ability(entity_level)))
+	
+	
 	entity_exp_cap = entity_exp+entity_exp_cap
 	$".".get_parent()._level_up()
 	
